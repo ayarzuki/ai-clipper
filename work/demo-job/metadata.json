@@ -1,0 +1,72 @@
+{
+  "job_id": "demo-job",
+  "source": "https://youtube.com/watch?v=dQw4w9WgXcQ (Data Engineering Masterclass)",
+  "duration_s": 150,
+  "clips": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 41.0,
+      "duration": 41,
+      "duration_s": 41,
+      "virality_score": 88,
+      "score": 88,
+      "caption_template": "karaoke-classic",
+      "title": "The 3 rules of great data pipelines",
+      "hook": "Stop building messy data pipelines today",
+      "caption": "Mastering modern data engineering comes down to 3 core principles. Are you following all 3? #dataengineering #bigdata #python",
+      "hashtags": [
+        "#dataengineering",
+        "#bigdata",
+        "#python",
+        "#coding",
+        "#architecture"
+      ],
+      "filename": "01_the_3_rules.mp4",
+      "srt": "/api/jobs/demo-job/srt/1"
+    },
+    {
+      "id": 2,
+      "start": 50.0,
+      "end": 125.0,
+      "duration": 75,
+      "duration_s": 75,
+      "virality_score": 72,
+      "score": 72,
+      "caption_template": "karaoke-classic",
+      "title": "Why your ETL jobs fail at 3 AM",
+      "hook": "Every data engineer makes this fatal mistake",
+      "caption": "Why does PagerDuty always ring at 3 AM? Dead letter queues will save your sleep schedule. #dataengineering #cloud #softwaredeveloper",
+      "hashtags": [
+        "#dataengineering",
+        "#cloud",
+        "#softwaredeveloper",
+        "#tech",
+        "#devops"
+      ],
+      "filename": "02_etl_fails.mp4",
+      "srt": "/api/jobs/demo-job/srt/2"
+    },
+    {
+      "id": 3,
+      "start": 130.0,
+      "end": 142.0,
+      "duration": 12,
+      "duration_s": 12,
+      "virality_score": 45,
+      "score": 45,
+      "caption_template": "karaoke-classic",
+      "title": "Quick tip: Schema drift killer",
+      "hook": "Fix schema drift with one simple check",
+      "caption": "Stop running expensive full table scans just to catch schema drift. Enforce compatibility at the producer! #dataengineering #tech #sql",
+      "hashtags": [
+        "#dataengineering",
+        "#tech",
+        "#sql",
+        "#programming"
+      ],
+      "filename": "03_schema_drift.mp4",
+      "srt": "/api/jobs/demo-job/srt/3"
+    }
+  ]
+}

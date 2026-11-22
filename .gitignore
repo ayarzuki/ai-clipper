@@ -1,0 +1,7 @@
+.env
+.tmp/
+run-*.log
+work/*
+!work/demo-job/
+__pycache__/
+*.pyc

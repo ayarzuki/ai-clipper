@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Clipper — Job Detail</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/captions.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="app-header">
+      <div style="margin-bottom: 8px;">
+        <a href="/" style="font-size: 13px; display: inline-flex; align-items: center; gap: 6px;">
+          ← Back to Dashboard
+        </a>
+      </div>
+
+      <div class="header-top">
+        <div class="header-title-wrap">
+          <div class="logo-row">
+            <span class="logo-badge" id="job-id-badge">demo-job</span>
+            <h1 class="app-title" id="job-source-title">https://youtube.com/watch?v=dQw4w9WgXcQ (Data Engineering Masterclass)</h1>
+          </div>
+          <p class="tagline" id="job-duration-line">Source Duration: ~2m 30s (150s) • 3 candidate clips generated</p>
+        </div>
+
+        <div class="cost-chip">
+          <span>⚡ Est. Cost ≈$0.04/hr</span>
+      </div>
+    </header>
+
+    <!-- Error Banner (shown on failed jobs) -->
+    <div id="job-error-banner" class="error-banner" style="display: none;"></div>
+
+    <!-- Stage Stepper -->
+    <section class="stepper-container" id="stage-stepper">
+      <div class="stepper-stage stage-done" id="stage-ingest">
+        <span class="mini-dot done"></span>
+        <div>
+          <div class="stage-name">1. Ingest</div>
+          <div class="stage-status">Done</div>
+        </div>
+      </div>
+      <div class="stepper-stage stage-done" id="stage-asr">
+        <span class="mini-dot done"></span>
+        <div>
+          <div class="stage-name">2. ASR</div>
+          <div class="stage-status">Done</div>
+        </div>
+      </div>
+      <div class="stepper-stage stage-done" id="stage-normalize">
+        <span class="mini-dot done"></span>
+        <div>
+          <div class="stage-name">3. Normalize</div>
+          <div class="stage-status">Done</div>
+        </div>
+      </div>
+      <div class="stepper-stage stage-done" id="stage-select">
+        <span class="mini-dot done"></span>
+        <div>
+          <div class="stage-name">4. Select</div>
+          <div class="stage-status">Done</div>
+        </div>
+      </div>
+      <div class="stepper-stage stage-done" id="stage-render">
+        <span class="mini-dot done"></span>
+        <div>
+          <div class="stage-name">5. Render</div>
+          <div class="stage-status">Done</div>
+        </div>
+      </div>
+      <div class="stepper-stage stage-done" id="stage-package">
+        <span class="mini-dot done"></span>
+        <div>
+          <div class="stage-name">6. Package</div>
+          <div class="stage-status">Done</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collapsible Transcript Panel -->
+    <details class="transcript-panel" id="transcript-details">
+      <summary>
+        <span>Full Timestamped Transcript</span>
+        <span style="font-size: 12px; color: var(--cyan-accent);">Toggle view</span>
+      </summary>
+      <div class="transcript-list" id="transcript-container">
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:00]</span>
+          <span class="transcript-text">Welcome back. Today we're diving into the fundamental rules of great data pipelines.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:03]</span>
+          <span class="transcript-text">Rule number one is dead simple: never mutate your raw incoming stream.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:08]</span>
+          <span class="transcript-text">Rule number two: every single transformation DAG must be completely idempotent.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:15]</span>
+          <span class="transcript-text">If a pipeline worker fails halfway through, re-running it should yield the exact same state without duplicate records.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:24]</span>
+          <span class="transcript-text">And rule number three: decouple your persistent storage format from your compute engine.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:32]</span>
+          <span class="transcript-text">Follow these three rules and your pipelines will survive any massive scale spike.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:41]</span>
+          <span class="transcript-text">Now let's switch gears and examine what happens when things break down in production.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:00:50]</span>
+          <span class="transcript-text">It is 3 AM, PagerDuty goes off, and your ETL pipeline just choked on malformed payload data.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:01:08]</span>
+          <span class="transcript-text">Most junior engineers make the mistake of hardcoding blind retry backoff without dead letter queues.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:01:28]</span>
+          <span class="transcript-text">When an unparsed JSON payload hits the sink, the whole consumer group stalls and lag explodes into millions.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:01:48]</span>
+          <span class="transcript-text">Route poisonous records to a dead letter topic immediately to keep moving, and alert the data steward asynchronously.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:02:05]</span>
+          <span class="transcript-text">Let's touch on one final quick optimization for schema validation.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:02:10]</span>
+          <span class="transcript-text">Stop running expensive full table scans just to catch unexpected schema drift.</span>
+        </div>
+        <div class="transcript-item">
+          <span class="transcript-time">[00:02:16]</span>
+          <span class="transcript-text">Use an Avro registry with forward compatibility checks at producer time and fail fast before ingestion.</span>
+        </div>
+      </div>
+    </details>
+
+    <!-- Legend -->
+    <div class="legend-card">
+      <div class="legend-group">
+        <span class="legend-title">Virality Score:</span>
+        <span class="virality-pill virality-high">≥80 High</span>
+        <span class="virality-pill virality-med">50–79 Medium</span>
+        <span class="virality-pill virality-low">&lt;50 Low</span>
+      </div>
+      <div class="legend-group">
+        <span class="legend-title">Duration Rules:</span>
+        <span class="duration-chip duration-emerald">20–59s Ideal</span>
+        <span class="duration-chip duration-amber">60–180s Long</span>
+        <span class="duration-chip duration-rose">&lt;20s or &gt;180s Warning</span>
+      </div>
+    </div>
+
+    <!-- Clip Grid -->
+    <section class="clip-grid" id="clip-grid">
+      <!-- Static Clip 1 -->
+      <div class="clip-card" data-clip-id="1">
+        <div class="preview-container">
+          <div class="preview-9-16">
+            <span class="preview-mock-tag">9:16 Mock</span>
+            <div class="preview-hook-text" id="preview-hook-1">Stop building messy data pipelines today</div>
+            <div class="caption-overlay tpl-karaoke-classic" id="caption-overlay-1">
+              <span class="caption-text"><span class="caption-word active">Never</span> <span class="caption-word">mutate</span> <span class="caption-word">your</span> <span class="caption-word">raw</span> <span class="caption-word">incoming</span> <span class="caption-word">stream</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <span class="virality-pill virality-high">★ 88</span>
+          <span class="duration-chip duration-emerald">⏱ 41s</span>
+        </div>
+
+        <!-- Warning Slot (Equal-height alignment across grid) -->
+        <div class="warning-slot"></div>
+
+        <div class="clip-form">
+          <div class="form-group">
+            <label for="title-1">Title</label>
+            <input type="text" id="title-1" class="clip-title-input" value="The 3 rules of great data pipelines">
+          </div>
+
+          <div class="form-group">
+            <div class="field-label-row">
+              <label for="hook-1">Hook (Max 7 words)</label>
+              <span class="word-counter" id="hook-count-1">6/7 words</span>
+            </div>
+            <input type="text" id="hook-1" class="hook-input" data-clip-id="1" value="Stop building messy data pipelines today">
+          </div>
+
+          <div class="form-group">
+            <label for="caption-1">Caption</label>
+            <textarea id="caption-1" rows="3" class="clip-caption-input">Mastering modern data engineering comes down to 3 core principles. Are you following all 3?</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="hashtags-1">Hashtags</label>
+            <input type="text" id="hashtags-1" class="clip-hashtags-input" value="#dataengineering, #bigdata, #python, #coding, #architecture">
+            <div class="hashtags-container" id="hashtag-chips-1">
+              <span class="hashtag-pill">#dataengineering</span>
+              <span class="hashtag-pill">#bigdata</span>
+              <span class="hashtag-pill">#python</span>
+              <span class="hashtag-pill">#coding</span>
+              <span class="hashtag-pill">#architecture</span>
+            </div>
+          </div>
+
+          <!-- Caption Style Presets Picker -->
+          <div class="caption-style-section">
+            <div class="field-label-row">
+              <label>Caption Style Preset</label>
+              <span class="active-tpl-label" id="active-tpl-label-1" style="font-size: 11px; color: var(--cyan-accent); font-weight: 600;">Karaoke Classic</span>
+            </div>
+            <div class="template-chips-scroll" id="template-chips-1">
+              <button type="button" class="tpl-chip" data-template-id="bold-pop" data-clip-id="1">Bold Pop</button>
+              <button type="button" class="tpl-chip active" data-template-id="karaoke-classic" data-clip-id="1">Karaoke Classic</button>
+              <button type="button" class="tpl-chip" data-template-id="neon-glow" data-clip-id="1">Neon Glow</button>
+              <button type="button" class="tpl-chip" data-template-id="minimal-clean" data-clip-id="1">Minimal Clean</button>
+              <button type="button" class="tpl-chip" data-template-id="hype-emoji" data-clip-id="1">Hype Emoji</button>
+              <button type="button" class="tpl-chip" data-template-id="typewriter" data-clip-id="1">Typewriter</button>
+              <button type="button" class="tpl-chip" data-template-id="boxed-news" data-clip-id="1">Boxed News</button>
+              <button type="button" class="tpl-chip" data-template-id="gradient-influencer" data-clip-id="1">Gradient Influencer</button>
+            </div>
+            <div class="caption-btn-row">
+              <button type="button" class="btn btn-outline btn-sm apply-all-btn" data-clip-id="1">Apply to all clips</button>
+              <button type="button" class="btn btn-outline btn-sm preview-cap-btn" data-clip-id="1">Preview caption</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <div class="tooltip-wrapper">
+            <button type="button" class="btn btn-outline btn-sm" disabled style="width: 100%;">
+              Download MP4
+            </button>
+            <span class="tooltip-text">Mock mode: render pipeline not wired</span>
+          </div>
+          <a href="/api/jobs/demo-job/srt/1" download="clip_1.srt" class="btn btn-outline btn-sm">
+            Download SRT
+          </a>
+          <button type="button" class="btn btn-primary btn-sm copy-btn" data-clip-id="1">
+            Copy caption
+          </button>
+        </div>
+      </div>
+
+      <!-- Static Clip 2 -->
+      <div class="clip-card" data-clip-id="2">
+        <div class="preview-container">
+          <div class="preview-9-16">
+            <span class="preview-mock-tag">9:16 Mock</span>
+            <div class="preview-hook-text" id="preview-hook-2">Every data engineer makes this fatal mistake</div>
+            <div class="caption-overlay tpl-karaoke-classic" id="caption-overlay-2">
+              <span class="caption-text"><span class="caption-word active">Never</span> <span class="caption-word">mutate</span> <span class="caption-word">your</span> <span class="caption-word">raw</span> <span class="caption-word">incoming</span> <span class="caption-word">stream</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <span class="virality-pill virality-med">★ 72</span>
+          <span class="duration-chip duration-amber">⏱ 75s</span>
+        </div>
+
+        <!-- Warning Slot (Visible duration warning) -->
+        <div class="warning-slot">
+          <div class="warning-banner warning-amber">
+            ⚠️ Duration warning: 75s exceeds recommended &lt;60s limit
+          </div>
+        </div>
+
+        <div class="clip-form">
+          <div class="form-group">
+            <label for="title-2">Title</label>
+            <input type="text" id="title-2" class="clip-title-input" value="Why your ETL jobs fail at 3 AM">
+          </div>
+
+          <div class="form-group">
+            <div class="field-label-row">
+              <label for="hook-2">Hook (Max 7 words)</label>
+              <span class="word-counter" id="hook-count-2">7/7 words</span>
+            </div>
+            <input type="text" id="hook-2" class="hook-input" data-clip-id="2" value="Every data engineer makes this fatal mistake">
+          </div>
+
+          <div class="form-group">
+            <label for="caption-2">Caption</label>
+            <textarea id="caption-2" rows="3" class="clip-caption-input">Why does PagerDuty always ring at 3 AM? Dead letter queues will save your sleep schedule.</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="hashtags-2">Hashtags</label>
+            <input type="text" id="hashtags-2" class="clip-hashtags-input" value="#dataengineering, #cloud, #softwaredeveloper, #tech, #devops">
+            <div class="hashtags-container" id="hashtag-chips-2">
+              <span class="hashtag-pill">#dataengineering</span>
+              <span class="hashtag-pill">#cloud</span>
+              <span class="hashtag-pill">#softwaredeveloper</span>
+              <span class="hashtag-pill">#tech</span>
+              <span class="hashtag-pill">#devops</span>
+            </div>
+          </div>
+
+          <!-- Caption Style Presets Picker -->
+          <div class="caption-style-section">
+            <div class="field-label-row">
+              <label>Caption Style Preset</label>
+              <span class="active-tpl-label" id="active-tpl-label-2" style="font-size: 11px; color: var(--cyan-accent); font-weight: 600;">Karaoke Classic</span>
+            </div>
+            <div class="template-chips-scroll" id="template-chips-2">
+              <button type="button" class="tpl-chip" data-template-id="bold-pop" data-clip-id="2">Bold Pop</button>
+              <button type="button" class="tpl-chip active" data-template-id="karaoke-classic" data-clip-id="2">Karaoke Classic</button>
+              <button type="button" class="tpl-chip" data-template-id="neon-glow" data-clip-id="2">Neon Glow</button>
+              <button type="button" class="tpl-chip" data-template-id="minimal-clean" data-clip-id="2">Minimal Clean</button>
+              <button type="button" class="tpl-chip" data-template-id="hype-emoji" data-clip-id="2">Hype Emoji</button>
+              <button type="button" class="tpl-chip" data-template-id="typewriter" data-clip-id="2">Typewriter</button>
+              <button type="button" class="tpl-chip" data-template-id="boxed-news" data-clip-id="2">Boxed News</button>
+              <button type="button" class="tpl-chip" data-template-id="gradient-influencer" data-clip-id="2">Gradient Influencer</button>
+            </div>
+            <div class="caption-btn-row">
+              <button type="button" class="btn btn-outline btn-sm apply-all-btn" data-clip-id="2">Apply to all clips</button>
+              <button type="button" class="btn btn-outline btn-sm preview-cap-btn" data-clip-id="2">Preview caption</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <div class="tooltip-wrapper">
+            <button type="button" class="btn btn-outline btn-sm" disabled style="width: 100%;">
+              Download MP4
+            </button>
+            <span class="tooltip-text">Mock mode: render pipeline not wired</span>
+          </div>
+          <a href="/api/jobs/demo-job/srt/2" download="clip_2.srt" class="btn btn-outline btn-sm">
+            Download SRT
+          </a>
+          <button type="button" class="btn btn-primary btn-sm copy-btn" data-clip-id="2">
+            Copy caption
+          </button>
+        </div>
+      </div>
+
+      <!-- Static Clip 3 -->
+      <div class="clip-card" data-clip-id="3">
+        <div class="preview-container">
+          <div class="preview-9-16">
+            <span class="preview-mock-tag">9:16 Mock</span>
+            <div class="preview-hook-text" id="preview-hook-3">Fix schema drift with one simple check</div>
+            <div class="caption-overlay tpl-karaoke-classic" id="caption-overlay-3">
+              <span class="caption-text"><span class="caption-word active">Never</span> <span class="caption-word">mutate</span> <span class="caption-word">your</span> <span class="caption-word">raw</span> <span class="caption-word">incoming</span> <span class="caption-word">stream</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="badge-row">
+          <span class="virality-pill virality-low">★ 45</span>
+          <span class="duration-chip duration-rose">⏱ 12s</span>
+        </div>
+
+        <!-- Warning Slot (Visible duration warning) -->
+        <div class="warning-slot">
+          <div class="warning-banner warning-rose">
+            ⚠️ Duration warning: 12s is too short (min recommended 20s)
+          </div>
+        </div>
+
+        <div class="clip-form">
+          <div class="form-group">
+            <label for="title-3">Title</label>
+            <input type="text" id="title-3" class="clip-title-input" value="Quick tip: Schema drift killer">
+          </div>
+
+          <div class="form-group">
+            <div class="field-label-row">
+              <label for="hook-3">Hook (Max 7 words)</label>
+              <span class="word-counter" id="hook-count-3">7/7 words</span>
+            </div>
+            <input type="text" id="hook-3" class="hook-input" data-clip-id="3" value="Fix schema drift with one simple check">
+          </div>
+
+          <div class="form-group">
+            <label for="caption-3">Caption</label>
+            <textarea id="caption-3" rows="3" class="clip-caption-input">Stop running expensive full table scans just to catch schema drift. Enforce compatibility at the producer!</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="hashtags-3">Hashtags</label>
+            <input type="text" id="hashtags-3" class="clip-hashtags-input" value="#dataengineering, #tech, #sql, #programming">
+            <div class="hashtags-container" id="hashtag-chips-3">
+              <span class="hashtag-pill">#dataengineering</span>
+              <span class="hashtag-pill">#tech</span>
+              <span class="hashtag-pill">#sql</span>
+              <span class="hashtag-pill">#programming</span>
+            </div>
+          </div>
+
+          <!-- Caption Style Presets Picker -->
+          <div class="caption-style-section">
+            <div class="field-label-row">
+              <label>Caption Style Preset</label>
+              <span class="active-tpl-label" id="active-tpl-label-3" style="font-size: 11px; color: var(--cyan-accent); font-weight: 600;">Karaoke Classic</span>
+            </div>
+            <div class="template-chips-scroll" id="template-chips-3">
+              <button type="button" class="tpl-chip" data-template-id="bold-pop" data-clip-id="3">Bold Pop</button>
+              <button type="button" class="tpl-chip active" data-template-id="karaoke-classic" data-clip-id="3">Karaoke Classic</button>
+              <button type="button" class="tpl-chip" data-template-id="neon-glow" data-clip-id="3">Neon Glow</button>
+              <button type="button" class="tpl-chip" data-template-id="minimal-clean" data-clip-id="3">Minimal Clean</button>
+              <button type="button" class="tpl-chip" data-template-id="hype-emoji" data-clip-id="3">Hype Emoji</button>
+              <button type="button" class="tpl-chip" data-template-id="typewriter" data-clip-id="3">Typewriter</button>
+              <button type="button" class="tpl-chip" data-template-id="boxed-news" data-clip-id="3">Boxed News</button>
+              <button type="button" class="tpl-chip" data-template-id="gradient-influencer" data-clip-id="3">Gradient Influencer</button>
+            </div>
+            <div class="caption-btn-row">
+              <button type="button" class="btn btn-outline btn-sm apply-all-btn" data-clip-id="3">Apply to all clips</button>
+              <button type="button" class="btn btn-outline btn-sm preview-cap-btn" data-clip-id="3">Preview caption</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <div class="tooltip-wrapper">
+            <button type="button" class="btn btn-outline btn-sm" disabled style="width: 100%;">
+              Download MP4
+            </button>
+            <span class="tooltip-text">Mock mode: render pipeline not wired</span>
+          </div>
+          <a href="/api/jobs/demo-job/srt/3" download="clip_3.srt" class="btn btn-outline btn-sm">
+            Download SRT
+          </a>
+          <button type="button" class="btn btn-primary btn-sm copy-btn" data-clip-id="3">
+            Copy caption
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="/job.js"></script>
+</body>
+</html>

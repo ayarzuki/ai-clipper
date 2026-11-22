@@ -1,0 +1,77 @@
+[
+  {
+    "start": 0.0,
+    "end": 3.8,
+    "text": "Welcome back. Today we're diving into the fundamental rules of great data pipelines."
+  },
+  {
+    "start": 3.8,
+    "end": 8.5,
+    "text": "Rule number one is dead simple: never mutate your raw incoming stream."
+  },
+  {
+    "start": 8.5,
+    "end": 15.2,
+    "text": "Rule number two: every single transformation DAG must be completely idempotent."
+  },
+  {
+    "start": 15.2,
+    "end": 24.0,
+    "text": "If a pipeline worker fails halfway through, re-running it should yield the exact same state without duplicate records."
+  },
+  {
+    "start": 24.0,
+    "end": 32.5,
+    "text": "And rule number three: decouple your persistent storage format from your compute engine."
+  },
+  {
+    "start": 32.5,
+    "end": 41.0,
+    "text": "Follow these three rules and your pipelines will survive any massive scale spike."
+  },
+  {
+    "start": 41.0,
+    "end": 50.0,
+    "text": "Now let's switch gears and examine what happens when things break down in production."
+  },
+  {
+    "start": 50.0,
+    "end": 68.0,
+    "text": "It is 3 AM, PagerDuty goes off, and your ETL pipeline just choked on malformed payload data."
+  },
+  {
+    "start": 68.0,
+    "end": 88.0,
+    "text": "Most junior engineers make the mistake of hardcoding blind retry backoff without dead letter queues."
+  },
+  {
+    "start": 88.0,
+    "end": 108.0,
+    "text": "When an unparsed JSON payload hits the sink, the whole consumer group stalls and lag explodes into millions."
+  },
+  {
+    "start": 108.0,
+    "end": 125.0,
+    "text": "Route poisonous records to a dead letter topic immediately to keep moving, and alert the data steward asynchronously."
+  },
+  {
+    "start": 125.0,
+    "end": 130.0,
+    "text": "Let's touch on one final quick optimization for schema validation."
+  },
+  {
+    "start": 130.0,
+    "end": 136.0,
+    "text": "Stop running expensive full table scans just to catch unexpected schema drift."
+  },
+  {
+    "start": 136.0,
+    "end": 142.0,
+    "text": "Use an Avro registry with forward compatibility checks at producer time and fail fast before ingestion."
+  },
+  {
+    "start": 142.0,
+    "end": 150.0,
+    "text": "That wraps up our architecture deep dive for today. Hit subscribe for more data engineering insights."
+  }
+]

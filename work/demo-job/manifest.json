@@ -1,0 +1,17 @@
+{
+  "job_id": "demo-job",
+  "source": "https://youtube.com/watch?v=dQw4w9WgXcQ (Data Engineering Masterclass)",
+  "status": "done",
+  "clip_count": 3,
+  "created": "2026-09-22T20:15:00Z",
+  "target_len_s": 45,
+  "duration_s": 150,
+  "stages": {
+    "ingest": "done",
+    "asr": "done",
+    "normalize": "done",
+    "select": "done",
+    "render": "done",
+    "package": "done"
+  }
+}

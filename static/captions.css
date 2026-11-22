@@ -1,0 +1,317 @@
+/* Caption Template Presets & Overlay Styles */
+
+/* Base Overlay Band in 9:16 Video Preview */
+.caption-overlay {
+  position: absolute;
+  bottom: 24px; /* Sits above TikTok bottom safe zone */
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
+  max-width: calc(100% - 16px);
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.caption-overlay .caption-text {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.25;
+}
+
+.caption-overlay .caption-word {
+  display: inline-block;
+  margin: 0 2px;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+/* 1. Bold Pop */
+.tpl-bold-pop {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 21px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 1.5px 1.5px 0 #000, -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000;
+}
+.tpl-bold-pop .caption-word.active {
+  color: #fbbf24;
+  transform: scale(1.15);
+  text-shadow: 1.5px 1.5px 0 #000, -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000;
+}
+
+/* 2. Karaoke Classic (Default) */
+.tpl-karaoke-classic {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: none;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+.tpl-karaoke-classic .caption-word.active {
+  color: #34d399;
+  text-shadow: 0 0 6px rgba(52, 211, 153, 0.6);
+}
+
+/* 3. Neon Glow */
+.tpl-neon-glow {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #22d3ee;
+  text-shadow: 0 0 6px #22d3ee, 0 0 14px rgba(34, 211, 238, 0.7);
+}
+.tpl-neon-glow .caption-word.active {
+  color: #f472b6;
+  text-shadow: 0 0 8px #f472b6, 0 0 16px rgba(244, 114, 182, 0.8);
+  animation: neon-pulse 0.8s infinite alternate;
+}
+
+/* 4. Minimal Clean */
+.tpl-minimal-clean {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 9999px;
+  padding: 4px 10px;
+  text-shadow: none;
+}
+.tpl-minimal-clean .caption-word.active {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* 5. Hype Emoji */
+.tpl-hype-emoji {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 21px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 1.5px 1.5px 0 #000, -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000;
+}
+.tpl-hype-emoji .caption-word.active {
+  color: #fbbf24;
+  animation: word-bounce 0.6s infinite ease-in-out;
+}
+
+/* 6. Typewriter */
+.tpl-typewriter {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: none;
+  color: #ffffff;
+  text-shadow: none;
+}
+.tpl-typewriter .caption-text::after {
+  content: '|';
+  color: #22d3ee;
+  margin-left: 2px;
+  animation: cursor-blink 0.7s infinite;
+}
+
+/* 7. Boxed News */
+.tpl-boxed-news {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: #000000;
+  border-left: 3px solid #fbbf24;
+  padding: 3px 6px;
+  border-radius: 2px;
+  width: 92%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+.tpl-boxed-news .caption-word.active {
+  color: #ffffff;
+  background: rgba(251, 191, 36, 0.3);
+}
+
+/* 8. Gradient Influencer */
+.tpl-gradient-influencer {
+  font-family: Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  text-transform: none;
+  color: #22d3ee;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  border-radius: 9999px;
+  padding: 4px 10px;
+}
+.tpl-gradient-influencer .caption-word.active {
+  background: linear-gradient(90deg, #22d3ee, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.1);
+}
+
+/* Keyframes */
+@keyframes neon-pulse {
+  from {
+    text-shadow: 0 0 6px #f472b6, 0 0 12px #f472b6;
+  }
+  to {
+    text-shadow: 0 0 10px #f472b6, 0 0 20px #f472b6;
+  }
+}
+
+@keyframes word-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.05);
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .tpl-neon-glow .caption-word.active,
+  .tpl-hype-emoji .caption-word.active,
+  .tpl-typewriter .caption-text::after {
+    animation: none;
+  }
+  .tpl-bold-pop .caption-word.active,
+  .tpl-gradient-influencer .caption-word.active {
+    transform: none;
+  }
+}
+
+/* Caption Style Picker Controls */
+.caption-style-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.template-chips-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  max-width: 100%;
+  scrollbar-width: thin;
+}
+
+.template-chips-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.template-chips-scroll::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 4px;
+}
+
+.tpl-chip {
+  background: #0b1120;
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.tpl-chip:hover {
+  border-color: var(--cyan-accent);
+  color: var(--text-primary);
+}
+
+.tpl-chip.active {
+  background-color: var(--cyan-accent);
+  color: #020617;
+  border-color: var(--cyan-accent);
+  font-weight: 700;
+}
+
+.caption-btn-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.caption-btn-row .btn {
+  flex: 1;
+}
+
+/* Template Gallery on Dashboard */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.gallery-card {
+  background: #0b1120;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.gallery-card:hover {
+  border-color: var(--cyan-accent);
+  transform: translateY(-2px);
+}
+
+.gallery-card.default-preset {
+  border-color: var(--cyan-accent);
+  background: rgba(34, 211, 238, 0.04);
+}
+
+.gallery-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gallery-card-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.gallery-sample-box {
+  background: #030712;
+  border-radius: var(--radius-sm);
+  padding: 16px 10px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
